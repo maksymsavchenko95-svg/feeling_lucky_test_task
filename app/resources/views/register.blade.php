@@ -1,7 +1,7 @@
 <x-layout title="Register">
     <h1>Register</h1>
 
-    <form action="/register" method="POST">
+    <form action="{{ route('link.register') }}" method="POST">
         @csrf
         <label for="username">Enter your username:</label>
         <input type="text" id="username" name="username" value="{{ old('username') }}" required>
