@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\GameResult;
+use App\Models\User;
+use App\Services\GameService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,12 @@ class GameResultFactory extends Factory
      */
     public function definition(): array
     {
+        $number = fake()->numberBetween(1, 1000);
+
         return [
-            //
+            'user_id' => User::factory(),
+            'number' => $number,
+            ...GameService::outcome($number),
         ];
     }
 }
